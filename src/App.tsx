@@ -13,6 +13,7 @@ import { PaymentCancel } from './components/PaymentCancel';
 import { LoginPage } from './components/auth/LoginPage';
 import { SignupPage } from './components/auth/SignupPage';
 import { Dashboard } from './components/Dashboard';
+import { SupportPage } from './components/SupportPage';
 import { supabase } from './lib/supabase';
 
 function App() {
@@ -62,6 +63,8 @@ function App() {
   // New Legal pages
   const isPrivacyPage = currentHash === '#privacy';
   const isTermsPage = currentHash === '#terms';
+  const isSupportPage = currentHash === '#support';
+  const isSupportPage = currentHash === '#support'; // New route
 
   // Animation variants
   const pageVariants = {
@@ -100,6 +103,12 @@ function App() {
             <PaymentSuccess />
           ) : isCancelPage ? (
             <PaymentCancel />
+          ) : isSupportPage ? (
+            <>
+              <Navbar />
+              <SupportPage />
+              <Footer />
+            </>
           ) : isPricingPage ? (
             <>
               <Navbar />
