@@ -28,16 +28,27 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 
 export function PricingPage() {
 
-    const handleCheckout = (plan: 'monthly' | 'lifetime') => {
+    const handleCheckout = async (plan: 'monthly' | 'lifetime') => {
         // TODO: Replace these with actual Stripe Payment Links
         const MONTHLY_LINK = 'https://buy.stripe.com/PLACEHOLDER_MONTHLY';
         const LIFETIME_LINK = 'https://buy.stripe.com/PLACEHOLDER_LIFETIME';
 
-        if (plan === 'monthly') {
-            window.location.href = MONTHLY_LINK;
-        } else {
-            window.location.href = LIFETIME_LINK;
+        // Check for Auth
+        const { data: { user } } = await import('../lib/supabase').then(m => m.supabase.auth.getUser());
+
+        if (!user) {
+            // Redirect to signup if not logged in
+            window.location.href = '#signup?next=pricing';
+            return;
         }
+
+        // Attach user ID to the Stripe URL as client_reference_id
+        const baseUrl = plan === 'monthly' ? MONTHLY_LINK : LIFETIME_LINK;
+        // Check if URL already has query params
+        const separator = baseUrl.includes('?') ? '&' : '?';
+        const finalUrl = `${baseUrl}${separator}client_reference_id=${user.id}`;
+
+        window.location.href = finalUrl;
     };
 
     return (
