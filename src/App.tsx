@@ -66,7 +66,6 @@ function App() {
   const isPrivacyPage = currentHash === '#privacy';
   const isTermsPage = currentHash === '#terms';
   const isSupportPage = currentHash === '#support';
-  const isSupportPage = currentHash === '#support'; // New route
 
   // Animation variants
   const pageVariants = {
