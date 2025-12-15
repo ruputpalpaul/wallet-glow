@@ -1,9 +1,15 @@
 
 import { useState, useEffect } from 'react';
-import { Sparkles, CreditCard, Lock } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
-// Helper to manually parse query params from hash router (since we are using window.location.hash)
+// Initialize Stripe outside component to avoid recreation
+// Replace with your actual Publishable Key from Stripe Dashboard
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || 'pk_test_TYooMQauvdEDq54NiTphI7jx');
+
+// Helper to manually parse query params
 const useHashQuery = () => {
     const [query, setQuery] = useState<Record<string, string>>({});
     useEffect(() => {
@@ -17,49 +23,135 @@ const useHashQuery = () => {
                 setQuery(q);
             }
         };
-        parseHash(); // initial
+        parseHash();
         window.addEventListener('hashchange', parseHash);
         return () => window.removeEventListener('hashchange', parseHash);
     }, []);
     return query;
 };
 
+// Internal Form Component
+const CheckoutForm = ({ plan, email }: { plan: string, email: string }) => {
+    const stripe = useStripe();
+    const elements = useElements();
+    const [message, setMessage] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!stripe || !elements) {
+            return;
+        }
+
+        setIsLoading(true);
+
+        const { error } = await stripe.confirmPayment({
+            elements,
+            confirmParams: {
+                // Return to success page
+                return_url: `${window.location.origin}/#success`,
+                payment_method_data: {
+                    billing_details: {
+                        email: email || undefined,
+                    }
+                }
+            },
+        });
+
+        if (error.type === "card_error" || error.type === "validation_error") {
+            setMessage(error.message || "An unexpected error occurred.");
+        } else {
+            setMessage("An unexpected error occurred.");
+        }
+
+        setIsLoading(false);
+    };
+
+    return (
+        <form onSubmit={handleSubmit} className="space-y-6">
+            <PaymentElement id="payment-element" options={{ layout: "tabs" }} />
+            {message && <div className="text-red-500 text-sm">{message}</div>}
+            <button
+                disabled={isLoading || !stripe || !elements}
+                id="submit"
+                className="w-full py-4 rounded-xl bg-gradient-to-r from-rose-400 to-rose-500 text-white font-bold text-lg shadow-xl shadow-rose-200 hover:shadow-2xl hover:shadow-rose-300/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2"
+            >
+                {isLoading ? (
+                    <div className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full" />
+                ) : (
+                    plan === 'monthly' ? 'Start Free Trial' : 'Pay $50.00'
+                )}
+            </button>
+            <p className="text-center text-xs text-slate-400 mt-4">
+                Payments secured by Stripe. By subscribing you agree to our Terms.
+            </p>
+        </form>
+    );
+};
+
 export const CheckoutPage = () => {
     const query = useHashQuery();
     const plan = query.plan || 'monthly';
     const [email, setEmail] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [clientSecret, setClientSecret] = useState('');
+    const [loadingSecret, setLoadingSecret] = useState(false);
 
     useEffect(() => {
-        // Prefill email if logged in
+        // Prefill email
         supabase.auth.getUser().then(({ data: { user } }) => {
             if (user?.email) setEmail(user.email);
+            // Fetch PaymentIntent immediately if user is known? 
+            // Better to fetch once we are ready or immediately on load
         });
     }, []);
 
-    const handlePayment = async () => {
-        setLoading(true);
-        // Stripe Payment Links
-        const MONTHLY_LINK = 'https://buy.stripe.com/test_dRm8wIcZT5al34M8hhe3e00';
-        const LIFETIME_LINK = 'https://buy.stripe.com/test_7sYeV65xrcCN6gY7dde3e01';
+    useEffect(() => {
+        // Create PaymentIntent as soon as page loads (or when plan changes)
+        const createIntent = async () => {
+            setLoadingSecret(true);
+            try {
+                const { data: { user } } = await supabase.auth.getUser();
 
-        const { data: { user } } = await supabase.auth.getUser();
+                const res = await fetch('/api/create-payment-intent', {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        plan,
+                        userId: user?.id,
+                        email: user?.email || email
+                    }),
+                });
 
-        let baseUrl = plan === 'lifetime' ? LIFETIME_LINK : MONTHLY_LINK;
-        // If user is logged in, attach their ID for webhook association
-        if (user) {
-            const separator = baseUrl.includes('?') ? '&' : '?';
-            baseUrl = `${baseUrl}${separator}client_reference_id=${user.id}`;
-            if (email) baseUrl += `&prefilled_email=${encodeURIComponent(email)}`;
-        } else if (email) {
-            const separator = baseUrl.includes('?') ? '&' : '?';
-            baseUrl = `${baseUrl}${separator}prefilled_email=${encodeURIComponent(email)}`;
-        }
+                if (!res.ok) throw new Error('Failed to init payment');
 
-        window.location.href = baseUrl;
-    };
+                const data = await res.json();
+                setClientSecret(data.clientSecret);
+            } catch (err) {
+                console.error("Error creating payment intent", err);
+            } finally {
+                setLoadingSecret(false);
+            }
+        };
+
+        createIntent();
+    }, [plan]); // Re-create if plan changes (amount changes)
 
     const isMonthly = plan === 'monthly';
+
+    const appearance = {
+        theme: 'stripe' as const,
+        variables: {
+            colorPrimary: '#f43f5e', // rose-500
+            colorBackground: '#ffffff',
+            colorText: '#1e293b', // slate-800
+            borderRadius: '12px',
+        },
+    };
+    const options = {
+        clientSecret,
+        appearance,
+    };
 
     return (
         <div className="min-h-screen pt-24 pb-20 flex items-center justify-center bg-[#fffdf9] relative overflow-hidden">
@@ -116,61 +208,18 @@ export const CheckoutPage = () => {
                     )}
                 </div>
 
-                {/* Form Fields - Visual wrapper for redirection flow */}
-                <div className="space-y-6 mb-8">
-                    <div>
-                        <label className="block text-sm font-bold text-slate-700 mb-2">Email</label>
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="you@example.com"
-                            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 outline-none transition-all placeholder:text-slate-300"
-                        />
-                    </div>
-
-                    {/* Card Information - Visual only, actual entry happens on Stripe */}
-                    <div className="opacity-70 pointer-events-none relative">
-                        <label className="block text-sm font-bold text-slate-700 mb-2">Card information (Enter on Next Step)</label>
-                        <div className="space-y-3">
-                            <div className="relative">
-                                <CreditCard size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-                                <input disabled placeholder="•••• •••• •••• ••••" className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-400" />
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
-                                <input disabled placeholder="MM / YY" className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-400" />
-                                <input disabled placeholder="CVC" className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-400" />
-                            </div>
-                        </div>
-                        {/* Overlay to explain redirection */}
-                        <div className="absolute inset-0 bg-white/10 backdrop-blur-[1px] flex items-center justify-center rounded-xl">
-                            {/* <span className="bg-slate-900 text-white text-xs px-2 py-1 rounded">Securely managed by Stripe 🔒</span> */}
-                        </div>
-                    </div>
-                </div>
-
-                {/* Submit Button */}
-                <button
-                    onClick={handlePayment}
-                    disabled={loading}
-                    className="w-full py-4 rounded-xl bg-gradient-to-r from-rose-400 to-rose-500 text-white font-bold text-lg shadow-xl shadow-rose-200 hover:shadow-2xl hover:shadow-rose-300/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2"
-                >
-                    {loading ? (
-                        <span className="animate-spin text-white">⏳</span>
+                {/* Secure Payment Form */}
+                <div className="min-h-[300px]">
+                    {clientSecret ? (
+                        <Elements options={options} stripe={stripePromise}>
+                            <CheckoutForm plan={plan} email={email} />
+                        </Elements>
                     ) : (
-                        <>
-                            <Lock size={18} />
-                            {isMonthly ? 'Start Free Trial via Stripe' : 'Proceed to Secure Payment'}
-                        </>
+                        <div className="flex flex-col items-center justify-center h-full space-y-4 text-slate-400">
+                            <div className="animate-spin h-8 w-8 border-4 border-rose-200 border-t-rose-500 rounded-full" />
+                            <p className="text-sm">Initializing Secure Checkout...</p>
+                        </div>
                     )}
-                </button>
-
-                <div className="text-center mt-6 space-y-2">
-                    <p className="text-xs text-slate-400">Secured by Stripe • Your payment info is encrypted</p>
-                    <p className="text-[10px] text-slate-300 max-w-xs mx-auto leading-relaxed">
-                        By confirming, you agree to WalletGlow's Terms of Service.
-                        {isMonthly && ' Cancel anytime before trial ends to avoid charges.'}
-                    </p>
                 </div>
 
             </div>
