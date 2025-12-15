@@ -30,7 +30,6 @@ export function SignupPage() {
             setError(error.message);
             setLoading(false);
         } else {
-        } else {
             // Successful signup
             // Parse params from hash since we use hash routing
             const hash = window.location.hash;

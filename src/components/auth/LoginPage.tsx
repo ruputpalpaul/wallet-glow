@@ -24,7 +24,6 @@ export function LoginPage() {
             setError(error.message);
             setLoading(false);
         } else {
-        } else {
             // successful login
             const hash = window.location.hash;
             const queryPart = hash.includes('?') ? hash.split('?')[1] : '';
