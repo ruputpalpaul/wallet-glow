@@ -24,10 +24,22 @@ export function LoginPage() {
             setError(error.message);
             setLoading(false);
         } else {
-            // successful login, App.tsx will redirect content
-            // Assuming App.tsx listens to auth state changes
-            window.location.hash = '#dashboard';
-            window.location.reload(); // Force reload to trigger auth check if necessary
+        } else {
+            // successful login
+            const hash = window.location.hash;
+            const queryPart = hash.includes('?') ? hash.split('?')[1] : '';
+            const params = new URLSearchParams(queryPart);
+            const nextParam = params.get('next');
+            const planParam = params.get('plan');
+
+            if (nextParam === 'checkout') {
+                window.location.hash = `#checkout${planParam ? `?plan=${planParam}` : ''}`;
+            } else {
+                window.location.hash = '#dashboard';
+            }
+            // window.location.reload(); // Reload might clear state but ensures fresh session check
+            // For SPA, maybe not needed if state updates, but App.tsx reloading is safer
+            window.location.reload();
         }
     };
 

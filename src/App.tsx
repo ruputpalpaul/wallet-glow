@@ -8,6 +8,7 @@ import { HowItWorks } from './components/HowItWorks';
 import { Stories } from './components/Stories';
 import { CTASection } from './components/CTASection';
 import { PricingPage } from './components/PricingPage';
+import { CheckoutPage } from './components/CheckoutPage';
 import { Footer } from './components/Footer';
 import { PaymentSuccess } from './components/PaymentSuccess';
 import { PaymentCancel } from './components/PaymentCancel';
@@ -48,7 +49,8 @@ function App() {
 
       // Only scroll to top if we are navigating to a new "Page"
       // If it's a section on the landing page (#features, etc), let browser handle it
-      if (['#login', '#signup', '#dashboard', '#success', '#cancel', '#about', '#pricing', '#privacy', '#terms', '#support'].includes(newHash)) {
+      const baseHash = newHash.split('?')[0];
+      if (['#login', '#signup', '#dashboard', '#success', '#cancel', '#about', '#pricing', '#privacy', '#terms', '#support', '#checkout'].includes(baseHash)) {
         window.scrollTo(0, 0);
       }
     };
@@ -61,18 +63,22 @@ function App() {
   }, []);
 
   // Simple Router logic
-  const isAboutPage = currentHash === '#about';
-  const isPricingPage = currentHash === '#pricing';
-  const isSuccessPage = currentHash === '#success';
-  const isCancelPage = currentHash === '#cancel';
-  const isLoginPage = currentHash === '#login';
-  const isSignupPage = currentHash === '#signup';
-  const isDashboardPage = currentHash === '#dashboard';
+  // Handle query params in hash (e.g. #signup?next=pricing)
+  const hashPath = currentHash.split('?')[0];
+
+  const isAboutPage = hashPath === '#about';
+  const isPricingPage = hashPath === '#pricing';
+  const isSuccessPage = hashPath === '#success';
+  const isCancelPage = hashPath === '#cancel';
+  const isLoginPage = hashPath === '#login';
+  const isSignupPage = hashPath === '#signup';
+  const isDashboardPage = hashPath === '#dashboard';
+  const isCheckoutPage = hashPath === '#checkout';
 
   // New Legal pages
-  const isPrivacyPage = currentHash === '#privacy';
-  const isTermsPage = currentHash === '#terms';
-  const isSupportPage = currentHash === '#support';
+  const isPrivacyPage = hashPath === '#privacy';
+  const isTermsPage = hashPath === '#terms';
+  const isSupportPage = hashPath === '#support';
 
   // Animation variants
   const pageVariants = {
@@ -123,6 +129,8 @@ function App() {
               <PricingPage />
               <Footer />
             </>
+          ) : isCheckoutPage ? (
+            <CheckoutPage />
           ) : isPrivacyPage ? (
             <>
               <Navbar />

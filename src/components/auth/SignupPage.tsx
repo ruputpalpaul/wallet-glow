@@ -30,13 +30,19 @@ export function SignupPage() {
             setError(error.message);
             setLoading(false);
         } else {
+        } else {
             // Successful signup
-            // For simplicity, we assume auto-signin is on or email confirm is off for testing. 
-            // In prod, check data.session. 
-            // Redirecting to pricing or dashboard
-            const nextParam = new URLSearchParams(window.location.search).get('next');
+            // Parse params from hash since we use hash routing
+            const hash = window.location.hash;
+            const queryPart = hash.includes('?') ? hash.split('?')[1] : '';
+            const params = new URLSearchParams(queryPart);
+            const nextParam = params.get('next');
+            const planParam = params.get('plan');
+
             if (nextParam === 'pricing') {
                 window.location.hash = '#pricing';
+            } else if (nextParam === 'checkout') {
+                window.location.hash = `#checkout${planParam ? `?plan=${planParam}` : ''}`;
             } else {
                 window.location.hash = '#dashboard';
             }

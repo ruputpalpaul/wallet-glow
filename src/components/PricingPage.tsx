@@ -29,27 +29,21 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 export function PricingPage() {
 
     const handleCheckout = async (plan: 'monthly' | 'lifetime') => {
-        // Stripe Payment Links
-        // NOTE: Enable "Free Trial" (7 days) for the Monthly link in Stripe Dashboard if not already set.
-        const MONTHLY_LINK = 'https://buy.stripe.com/test_dRm8wIcZT5al34M8hhe3e00';
-        const LIFETIME_LINK = 'https://buy.stripe.com/test_7sYeV65xrcCN6gY7dde3e01';
-
         // Check for Auth
         const { data: { user } } = await import('../lib/supabase').then(m => m.supabase.auth.getUser());
 
         if (!user) {
             // Redirect to signup if not logged in
             window.location.href = '#signup?next=pricing';
+            // return; // Optional: let them preview checkout even if guest? No, auth first is better flow usually, but user asked for checkout page.
+            // Actually, let's allow guest to see checkout page, it handles email entry.
+            // window.location.href = `#checkout?plan=${plan}`;
+            window.location.href = '#signup?next=checkout&plan=' + plan;
             return;
         }
 
-        // Attach user ID to the Stripe URL as client_reference_id
-        const baseUrl = plan === 'monthly' ? MONTHLY_LINK : LIFETIME_LINK;
-        // Check if URL already has query params
-        const separator = baseUrl.includes('?') ? '&' : '?';
-        const finalUrl = `${baseUrl}${separator}client_reference_id=${user.id}`;
-
-        window.location.href = finalUrl;
+        // Redirect to internal Checkout Page instead of Stripe directly
+        window.location.href = `#checkout?plan=${plan}`;
     };
 
     return (
