@@ -95,7 +95,6 @@ export const CheckoutPage = () => {
     const plan = query.plan || 'monthly';
     const [email, setEmail] = useState('');
     const [clientSecret, setClientSecret] = useState('');
-    const [loadingSecret, setLoadingSecret] = useState(false);
 
     useEffect(() => {
         // Prefill email
@@ -109,7 +108,6 @@ export const CheckoutPage = () => {
     useEffect(() => {
         // Create PaymentIntent as soon as page loads (or when plan changes)
         const createIntent = async () => {
-            setLoadingSecret(true);
             try {
                 const { data: { user } } = await supabase.auth.getUser();
 
@@ -129,8 +127,6 @@ export const CheckoutPage = () => {
                 setClientSecret(data.clientSecret);
             } catch (err) {
                 console.error("Error creating payment intent", err);
-            } finally {
-                setLoadingSecret(false);
             }
         };
 
