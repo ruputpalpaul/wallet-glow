@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+/* 1. Import Font */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&display=swap');
+
+@theme {
+    /* Typography */
+    --font-sans: 'Google Sans Flex', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /* Colors mapped to CSS Variables */
+    --color-bg-darkest: var(--bg-darkest);
+    --color-bg-dark: var(--bg-dark);
+    --color-bg-mid: var(--bg-mid);
+    --color-bg-light: var(--bg-light);
+
+    --color-border-subtle: var(--border-subtle);
+    --color-border-default: var(--border-default);
+
+    --color-text-muted: var(--text-muted);
+    --color-text-default: var(--text-default);
+    --color-text-emphasis: var(--text-emphasis);
+
+    --color-pink-bg-subtle: var(--pink-bg-subtle);
+    --color-pink-bg-muted: var(--pink-bg-muted);
+    --color-pink-border: var(--pink-border);
+    --color-pink-default: var(--pink-default);
+    --color-pink-emphasis: var(--pink-emphasis);
+    --color-pink-text-on-pink: var(--pink-text-on-pink);
+
+    --color-success: var(--success);
+    --color-success-bg: var(--success-bg);
+    --color-danger: var(--danger);
+    --color-danger-bg: var(--danger-bg);
+    --color-warning: var(--warning);
+    --color-warning-bg: var(--warning-bg);
+    --color-info: var(--info);
+    --color-info-bg: var(--info-bg);
+}
+
+/* 2. Token Definitions */
+:root {
+    /* -- Light Mode Default (per user preference for "Baby Pink" vibe primarily) -- */
+    /* Neutrals */
+    --bg-darkest: oklch(98% 0 0);
+    --bg-dark: oklch(100% 0 0);
+    --bg-mid: oklch(96% 0 0);
+    --bg-light: oklch(94% 0 0);
+
+    --border-subtle: oklch(92% 0 0);
+    --border-default: oklch(82% 0 0);
+
+    --text-muted: oklch(56% 0 0);
+    --text-default: oklch(35% 0 0);
+    --text-emphasis: oklch(20% 0 0);
+
+    --highlight: oklch(100% 0 0);
+
+    /* Brand Pink */
+    --pink-bg-subtle: oklch(96% 0.04 345);
+    --pink-bg-muted: oklch(93% 0.06 345);
+    --pink-border: oklch(78% 0.12 345);
+    --pink-default: oklch(67% 0.14 345);
+    --pink-emphasis: oklch(62% 0.15 345);
+    --pink-text-on-pink: oklch(100% 0 0);
+
+    /* Semantic */
+    --success: oklch(58% 0.14 145);
+    --success-bg: oklch(94% 0.05 145);
+    --danger: oklch(60% 0.20 25);
+    --danger-bg: oklch(95% 0.06 25);
+    --warning: oklch(70% 0.14 85);
+    --warning-bg: oklch(93% 0.08 85);
+    --info: oklch(62% 0.14 245);
+    --info-bg: oklch(95% 0.05 245);
+}
+
+/* Dark Mode Overrides */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-darkest: oklch(0% 0 0);
+        --bg-dark: oklch(20% 0 0);
+        --bg-mid: oklch(30% 0 0);
+        --bg-light: oklch(37% 0 0);
+
+        --border-subtle: oklch(42% 0 0);
+        --border-default: oklch(52% 0 0);
+
+        --text-muted: oklch(60% 0 0);
+        --text-default: oklch(74% 0 0);
+        --text-emphasis: oklch(92% 0 0);
+
+        --highlight: oklch(47% 0 0);
+
+        --pink-bg-subtle: oklch(35% 0.11 345);
+        --pink-bg-muted: oklch(42% 0.11 345);
+        --pink-border: oklch(62% 0.11 345);
+        --pink-default: oklch(75% 0.11 345);
+        --pink-emphasis: oklch(87% 0.11 345);
+        --pink-text-on-pink: oklch(30% 0.11 345);
+
+        --success: oklch(72% 0.14 145);
+        --success-bg: oklch(35% 0.14 145);
+        --danger: oklch(67% 0.18 25);
+        --danger-bg: oklch(35% 0.18 25);
+        --warning: oklch(78% 0.14 85);
+        --warning-bg: oklch(45% 0.14 85);
+        --info: oklch(72% 0.13 245);
+        --info-bg: oklch(35% 0.13 245);
+    }
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: var(--bg-darkest);
+    color: var(--text-default);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}

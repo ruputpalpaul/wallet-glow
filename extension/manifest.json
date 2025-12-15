@@ -1,0 +1,40 @@
+{
+    "manifest_version": 3,
+    "name": "WalletGlow: Impulse Blocker",
+    "version": "1.0.0",
+    "permissions": [
+        "storage",
+        "activeTab"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": {
+            "16": "icon_wallet.jpg",
+            "48": "icon_wallet.jpg",
+            "128": "icon_wallet.jpg"
+        }
+    },
+    "icons": {
+        "16": "icon_wallet.jpg",
+        "48": "icon_wallet.jpg",
+        "128": "icon_wallet.jpg"
+    },
+    "background": {
+        "service_worker": "src/background/index.ts",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "src/content/index.tsx"
+            ],
+            "run_at": "document_end"
+        }
+    ]
+}

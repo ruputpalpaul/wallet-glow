@@ -1,0 +1,75 @@
+{
+  "": {
+    "swift-dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/master.swiftdeps"
+  },
+  "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/BudgetView.swift": {
+    "dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/BudgetView.d",
+    "object": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/BudgetView.swift.o",
+    "swiftmodule": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/BudgetView~partial.swiftmodule",
+    "swift-dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/BudgetView.swiftdeps",
+    "diagnostics": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/BudgetView.dia"
+  },
+  "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/ContentView.swift": {
+    "dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/ContentView.d",
+    "object": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/ContentView.swift.o",
+    "swiftmodule": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/ContentView~partial.swiftmodule",
+    "swift-dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/ContentView.swiftdeps",
+    "diagnostics": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/ContentView.dia"
+  },
+  "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/DashboardView.swift": {
+    "dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/DashboardView.d",
+    "object": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/DashboardView.swift.o",
+    "swiftmodule": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/DashboardView~partial.swiftmodule",
+    "swift-dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/DashboardView.swiftdeps",
+    "diagnostics": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/DashboardView.dia"
+  },
+  "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/DataService.swift": {
+    "dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/DataService.d",
+    "object": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/DataService.swift.o",
+    "swiftmodule": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/DataService~partial.swiftmodule",
+    "swift-dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/DataService.swiftdeps",
+    "diagnostics": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/DataService.dia"
+  },
+  "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/JewelryBoxView.swift": {
+    "dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/JewelryBoxView.d",
+    "object": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/JewelryBoxView.swift.o",
+    "swiftmodule": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/JewelryBoxView~partial.swiftmodule",
+    "swift-dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/JewelryBoxView.swiftdeps",
+    "diagnostics": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/JewelryBoxView.dia"
+  },
+  "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/LearnView.swift": {
+    "dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/LearnView.d",
+    "object": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/LearnView.swift.o",
+    "swiftmodule": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/LearnView~partial.swiftmodule",
+    "swift-dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/LearnView.swiftdeps",
+    "diagnostics": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/LearnView.dia"
+  },
+  "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/Models.swift": {
+    "dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/Models.d",
+    "object": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/Models.swift.o",
+    "swiftmodule": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/Models~partial.swiftmodule",
+    "swift-dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/Models.swiftdeps",
+    "diagnostics": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/Models.dia"
+  },
+  "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/Theme.swift": {
+    "dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/Theme.d",
+    "object": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/Theme.swift.o",
+    "swiftmodule": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/Theme~partial.swiftmodule",
+    "swift-dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/Theme.swiftdeps",
+    "diagnostics": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/Theme.dia"
+  },
+  "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/WalletGlowApp.swift": {
+    "dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/WalletGlowApp.d",
+    "object": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/WalletGlowApp.swift.o",
+    "swiftmodule": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/WalletGlowApp~partial.swiftmodule",
+    "swift-dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/WalletGlowApp.swiftdeps",
+    "diagnostics": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/WalletGlowApp.dia"
+  },
+  "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/WishlistView.swift": {
+    "dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/WishlistView.d",
+    "object": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/WishlistView.swift.o",
+    "swiftmodule": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/WishlistView~partial.swiftmodule",
+    "swift-dependencies": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/WishlistView.swiftdeps",
+    "diagnostics": "/Users/ruppaul/Desktop/Projects/De-impulsify/ios/WalletGlow/.build/arm64-apple-macosx/debug/WalletGlow.build/WishlistView.dia"
+  }
+}
