@@ -25,6 +25,9 @@ function App() {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setLoading(false);
+    }).catch(err => {
+      console.error('Auth Check Failed', err);
+      setLoading(false); // Valid to fail open as guest
     });
 
     const {
@@ -67,7 +70,13 @@ function App() {
     exit: { opacity: 0, y: -20 }
   };
 
-  if (loading) return null; // or a loading spinner
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-[#fffdf9]">
+        <div className="animate-pulse text-rose-400 font-bold text-xl">Loading WalletGlow...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#fffdf9] font-sans selection:bg-rose-200 selection:text-rose-900">
