@@ -95,6 +95,7 @@ export const CheckoutPage = () => {
     const plan = query.plan || 'monthly';
     const [email, setEmail] = useState('');
     const [clientSecret, setClientSecret] = useState('');
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         // Prefill email
@@ -108,6 +109,7 @@ export const CheckoutPage = () => {
     useEffect(() => {
         // Create PaymentIntent as soon as page loads (or when plan changes)
         const createIntent = async () => {
+            setError(null);
             try {
                 const { data: { user } } = await supabase.auth.getUser();
 
@@ -121,12 +123,23 @@ export const CheckoutPage = () => {
                     }),
                 });
 
-                if (!res.ok) throw new Error('Failed to init payment');
+                // Handle HTML response (usually local dev 404 falling back to index.html)
+                const contentType = res.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") === -1) {
+                    throw new Error("API endpoint not found. If running locally, check Vercel Functions configuration.");
+                }
+
+                if (!res.ok) {
+                    const errData = await res.json();
+                    throw new Error(errData.error || 'Failed to init payment');
+                }
 
                 const data = await res.json();
+                if (!data.clientSecret) throw new Error("No client secret returned");
                 setClientSecret(data.clientSecret);
-            } catch (err) {
+            } catch (err: any) {
                 console.error("Error creating payment intent", err);
+                setError(err.message || "Failed to load checkout");
             }
         };
 
@@ -206,7 +219,15 @@ export const CheckoutPage = () => {
 
                 {/* Secure Payment Form */}
                 <div className="min-h-[300px]">
-                    {clientSecret ? (
+                    {error ? (
+                        <div className="flex flex-col items-center justify-center h-full space-y-4 text-center p-6 bg-red-50 rounded-xl border border-red-100">
+                            <div className="text-red-500 font-bold">⚠️ Connection Error</div>
+                            <p className="text-sm text-red-600 max-w-xs">{error}</p>
+                            <button onClick={() => window.location.reload()} className="px-4 py-2 bg-white border border-red-200 rounded-lg text-sm text-red-700 hover:bg-red-50">
+                                Retry
+                            </button>
+                        </div>
+                    ) : clientSecret ? (
                         <Elements options={options} stripe={stripePromise}>
                             <CheckoutForm plan={plan} email={email} />
                         </Elements>

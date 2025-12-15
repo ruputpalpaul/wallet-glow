@@ -17,6 +17,10 @@ export default async function handler(req, res) {
         return;
     }
 
+    if (!process.env.STRIPE_SECRET_KEY) {
+        return res.status(500).json({ error: "Missing Server STRIPE_SECRET_KEY" });
+    }
+
     if (req.method !== 'POST') {
         res.setHeader('Allow', 'POST');
         return res.status(405).end('Method Not Allowed');
