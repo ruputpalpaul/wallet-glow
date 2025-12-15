@@ -27,6 +27,19 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 );
 
 export function PricingPage() {
+
+    const handleCheckout = (plan: 'monthly' | 'lifetime') => {
+        // TODO: Replace these with actual Stripe Payment Links
+        const MONTHLY_LINK = 'https://buy.stripe.com/PLACEHOLDER_MONTHLY';
+        const LIFETIME_LINK = 'https://buy.stripe.com/PLACEHOLDER_LIFETIME';
+
+        if (plan === 'monthly') {
+            window.location.href = MONTHLY_LINK;
+        } else {
+            window.location.href = LIFETIME_LINK;
+        }
+    };
+
     return (
         <div className="pt-24 pb-20">
             <div className="max-w-6xl mx-auto px-6">
@@ -68,7 +81,10 @@ export function PricingPage() {
                         </div>
                         <p className="text-xs text-slate-400 mb-8">Billed monthly after 7-day free trial</p>
 
-                        <button className="w-full py-4 rounded-xl bg-rose-400 text-white font-bold shadow-lg shadow-rose-200 hover:bg-rose-500 hover:shadow-xl hover:shadow-rose-300/50 hover:scale-[1.02] transition-all duration-300 mb-8">
+                        <button
+                            onClick={() => handleCheckout('monthly')}
+                            className="w-full py-4 rounded-xl bg-rose-400 text-white font-bold shadow-lg shadow-rose-200 hover:bg-rose-500 hover:shadow-xl hover:shadow-rose-300/50 hover:scale-[1.02] transition-all duration-300 mb-8"
+                        >
                             Start 7-Day Free Trial
                         </button>
 
@@ -106,7 +122,10 @@ export function PricingPage() {
                             Save over $10/year forever
                         </div>
 
-                        <button className="w-full py-4 rounded-xl bg-indigo-400 text-white font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-500 hover:shadow-xl hover:shadow-indigo-300/50 hover:scale-[1.02] transition-all duration-300 mb-8">
+                        <button
+                            onClick={() => handleCheckout('lifetime')}
+                            className="w-full py-4 rounded-xl bg-indigo-400 text-white font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-500 hover:shadow-xl hover:shadow-indigo-300/50 hover:scale-[1.02] transition-all duration-300 mb-8"
+                        >
                             Get Lifetime Access
                         </button>
 
@@ -199,3 +218,4 @@ export function PricingPage() {
         </div>
     );
 }
+

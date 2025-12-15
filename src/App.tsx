@@ -11,6 +11,8 @@ import { AboutPage } from './components/AboutPage';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsOfService } from './components/TermsOfService';
 import { PricingPage } from './components/PricingPage';
+import { PaymentSuccess } from './components/PaymentSuccess';
+import { PaymentCancel } from './components/PaymentCancel';
 
 function App() {
   const [currentHash, setCurrentHash] = useState(window.location.hash);
@@ -19,7 +21,7 @@ function App() {
     const handleHashChange = () => {
       setCurrentHash(window.location.hash);
       // Scroll to top on page switch if it's a "page" change, not just a section anchor
-      if (['#about', '#privacy', '#terms', '#pricing', '#', ''].includes(window.location.hash)) {
+      if (['#about', '#privacy', '#terms', '#pricing', '#success', '#cancel', '#', ''].includes(window.location.hash)) {
         window.scrollTo(0, 0);
       }
     };
@@ -33,6 +35,8 @@ function App() {
   const isPrivacyPage = currentHash === '#privacy';
   const isTermsPage = currentHash === '#terms';
   const isPricingPage = currentHash === '#pricing';
+  const isSuccessPage = currentHash === '#success';
+  const isCancelPage = currentHash === '#cancel';
 
   // Animation variants
   const pageVariants = {
@@ -62,6 +66,10 @@ function App() {
             <TermsOfService />
           ) : isPricingPage ? (
             <PricingPage />
+          ) : isSuccessPage ? (
+            <PaymentSuccess />
+          ) : isCancelPage ? (
+            <PaymentCancel />
           ) : (
             <>
               <Hero />
