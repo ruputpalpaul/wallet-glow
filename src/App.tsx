@@ -14,6 +14,8 @@ import { LoginPage } from './components/auth/LoginPage';
 import { SignupPage } from './components/auth/SignupPage';
 import { Dashboard } from './components/Dashboard';
 import { SupportPage } from './components/SupportPage';
+import { AboutPage } from './components/AboutPage';
+import { PrivacyPage, TermsPage } from './components/LegalPages';
 import { supabase } from './lib/supabase';
 
 function App() {
@@ -118,28 +120,19 @@ function App() {
           ) : isPrivacyPage ? (
             <>
               <Navbar />
-              <div className="pt-24 pb-20 px-6 max-w-4xl mx-auto">
-                <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
-                <p>This is a placeholder for the privacy policy.</p>
-              </div>
+              <PrivacyPage />
               <Footer />
             </>
           ) : isTermsPage ? (
             <>
               <Navbar />
-              <div className="pt-24 pb-20 px-6 max-w-4xl mx-auto">
-                <h1 className="text-3xl font-bold mb-4">Terms of Service</h1>
-                <p>This is a placeholder for the terms of service.</p>
-              </div>
+              <TermsPage />
               <Footer />
             </>
           ) : isAboutPage ? (
             <>
               <Navbar />
-              <div className="pt-24 pb-20 px-6 max-w-4xl mx-auto text-center">
-                <h1 className="text-4xl font-bold mb-4">About WalletGlow</h1>
-                <p className="text-lg text-slate-600">We are on a mission to help people spend mindfully.</p>
-              </div>
+              <AboutPage />
               <Footer />
             </>
           ) : (

@@ -41,8 +41,15 @@ export const Footer = () => {
                     </div>
                 </div>
 
-                <div className="mt-20 pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <p className="text-slate-400 font-medium text-sm">© 2025 WalletGlow. All rights reserved.</p>
+                <div className="mt-20 pt-8 border-t border-rose-100 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div className="flex flex-col md:flex-row items-center gap-6">
+                        <p className="text-slate-400 font-medium text-sm">© 2024 WalletGlow. All rights reserved.</p>
+                        <div className="flex space-x-6 text-sm text-slate-500">
+                            <a href="#privacy" className="hover:text-rose-500 transition-colors">Privacy Policy</a>
+                            <a href="#terms" className="hover:text-rose-500 transition-colors">Terms of Service</a>
+                            <a href="#" className="hover:text-rose-500 transition-colors">Cookies</a>
+                        </div>
+                    </div>
                     <div className="flex gap-4">
                         <a href="#" className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-rose-500 hover:border-rose-200 transition-all hover:scale-110">
                             <Twitter size={18} />
