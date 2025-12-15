@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Sparkles } from 'lucide-react';
 
 export const Navbar = () => {
+    const [scrolled, setScrolled] = useState(false);
     const [user, setUser] = useState<any>(null);
 
     useEffect(() => {
@@ -18,7 +19,7 @@ export const Navbar = () => {
                 setUser(session?.user ?? null);
             });
             return subscription;
-        }).then(sub => {
+        }).then(() => {
             // efficient cleanup in strict mode
         });
 
