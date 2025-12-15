@@ -4,8 +4,16 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
+// Fallback to prevent crash if envs are missing (e.g. during build or before setup)
+// This allows the app to load and show a proper error message instead of a white screen
+const fallbackUrl = 'https://placeholder.supabase.co';
+const fallbackKey = 'placeholder';
+
 if (!supabaseUrl || !supabaseAnonKey) {
-    console.warn('Missing Supabase Environment Variables. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env file.');
+    console.warn('Supabase Env Vars missing. Using placeholder to prevent crash.');
 }
 
-export const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '');
+export const supabase = createClient(
+    supabaseUrl || fallbackUrl,
+    supabaseAnonKey || fallbackKey
+);
