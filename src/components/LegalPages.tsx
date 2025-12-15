@@ -39,10 +39,10 @@ function LegalLayout({ title, lastUpdated, children, icon: Icon }: { title: stri
 
 function Section({ title, number, children, icon: Icon }: { title: string, number: string, children: React.ReactNode, icon?: any }) {
     return (
-        <section className="bg-white rounded-[2rem] p-8 md:p-10 mb-6 border border-slate-100 shadow-sm">
+        <section className="bg-white rounded-[2rem] p-8 md:p-10 mb-6 border border-slate-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:translate-x-1">
             <div className="flex items-start gap-4 mb-6">
                 {Icon && (
-                    <div className="w-10 h-10 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 shrink-0 group-hover:scale-110 transition-transform">
                         <Icon size={20} />
                     </div>
                 )}

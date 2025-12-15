@@ -47,44 +47,44 @@ export function AboutPage() {
 
                 <div className="grid md:grid-cols-2 gap-6">
                     {/* Value 1 */}
-                    <div className="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                        <div className="w-12 h-12 bg-rose-100/50 rounded-2xl flex items-center justify-center text-rose-500 mb-6">
+                    <div className="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div className="w-12 h-12 bg-rose-100/50 rounded-2xl flex items-center justify-center text-rose-500 mb-6 group-hover:scale-110 transition-transform">
                             <Heart size={24} className="fill-rose-500" />
                         </div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-3">No Shame, Ever</h3>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3 text-rose-500 transition-colors">No Shame, Ever</h3>
                         <p className="text-slate-500 leading-relaxed">
                             Financial struggles are not character flaws. We create supportive, judgment-free experiences that meet you where you are.
                         </p>
                     </div>
 
                     {/* Value 2 */}
-                    <div className="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                        <div className="w-12 h-12 bg-blue-100/50 rounded-2xl flex items-center justify-center text-blue-500 mb-6">
+                    <div className="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div className="w-12 h-12 bg-blue-100/50 rounded-2xl flex items-center justify-center text-blue-500 mb-6 group-hover:scale-110 transition-transform">
                             <Users size={24} />
                         </div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-3">Neurodivergent-First Design</h3>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3 hover:text-blue-500 transition-colors">Neurodivergent-First Design</h3>
                         <p className="text-slate-500 leading-relaxed">
                             Every feature is designed with ADHD and neurodivergent experiences at the center, not as an afterthought.
                         </p>
                     </div>
 
                     {/* Value 3 */}
-                    <div className="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                        <div className="w-12 h-12 bg-indigo-100/50 rounded-2xl flex items-center justify-center text-indigo-500 mb-6">
+                    <div className="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div className="w-12 h-12 bg-indigo-100/50 rounded-2xl flex items-center justify-center text-indigo-500 mb-6 group-hover:scale-110 transition-transform">
                             <Shield size={24} />
                         </div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-3">Privacy First</h3>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3 hover:text-indigo-500 transition-colors">Privacy First</h3>
                         <p className="text-slate-500 leading-relaxed">
                             Your financial data is deeply personal. We never sell, share, or monetize your information. Period.
                         </p>
                     </div>
 
                     {/* Value 4 */}
-                    <div className="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                        <div className="w-12 h-12 bg-pink-100/50 rounded-2xl flex items-center justify-center text-pink-500 mb-6">
+                    <div className="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div className="w-12 h-12 bg-pink-100/50 rounded-2xl flex items-center justify-center text-pink-500 mb-6 group-hover:scale-110 transition-transform">
                             <Sparkles size={24} />
                         </div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-3">Joyful by Design</h3>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3 hover:text-pink-500 transition-colors">Joyful by Design</h3>
                         <p className="text-slate-500 leading-relaxed">
                             Financial wellness doesn't have to be boring or punishing. We believe in beauty, play, and celebrating every small win.
                         </p>

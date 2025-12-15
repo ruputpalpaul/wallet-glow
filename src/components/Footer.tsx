@@ -23,18 +23,19 @@ export const Footer = () => {
                         <div className="space-y-4">
                             <h4 className="font-bold text-slate-900">Product</h4>
                             <ul className="space-y-3 text-sm text-slate-500">
-                                <li><a href="#" className="hover:text-rose-500 transition-colors duration-300 hover:translate-x-1 inline-block">Features</a></li>
-                                <li><a href="#about" className="hover:text-rose-500 transition-colors duration-300 hover:translate-x-1 inline-block">About Us</a></li>
-                                <li><a href="#pricing" className="hover:text-rose-500 transition-colors duration-300 hover:translate-x-1 inline-block">Pricing</a></li>
-                                <li><a href="#pricing" className="hover:text-rose-500 transition-colors duration-300 hover:translate-x-1 inline-block">Stories</a></li>
+                                <li><a href="#features" className="hover:text-rose-500 transition-all duration-300 hover:translate-x-1 inline-block">Features</a></li>
+                                <li><a href="#about" className="hover:text-rose-500 transition-all duration-300 hover:translate-x-1 inline-block">About Us</a></li>
+                                <li><a href="#pricing" className="hover:text-rose-500 transition-all duration-300 hover:translate-x-1 inline-block">Pricing</a></li>
+                                <li><a href="#stories" className="hover:text-rose-500 transition-all duration-300 hover:translate-x-1 inline-block">Stories</a></li>
                             </ul>
                         </div>
                         <div className="space-y-4">
                             <h4 className="font-bold text-slate-900">Company</h4>
                             <ul className="space-y-3 text-sm text-slate-500">
-                                <li><a href="#about" className="hover:text-rose-500 transition-colors duration-300 hover:translate-x-1 inline-block">About Us</a></li>
-                                <li><a href="#privacy" className="hover:text-rose-500 transition-colors duration-300 hover:translate-x-1 inline-block">Privacy Policy</a></li>
-                                <li><a href="#terms" className="hover:text-rose-500 transition-colors duration-300 hover:translate-x-1 inline-block">Terms of Service</a></li>
+                                <li><a href="#about" className="hover:text-rose-500 transition-all duration-300 hover:translate-x-1 inline-block">About Us</a></li>
+                                <li><a href="#privacy" className="hover:text-rose-500 transition-all duration-300 hover:translate-x-1 inline-block">Privacy Policy</a></li>
+                                <li><a href="#terms" className="hover:text-rose-500 transition-all duration-300 hover:translate-x-1 inline-block">Terms of Service</a></li>
+                                <li><a href="#support" className="hover:text-rose-500 transition-all duration-300 hover:translate-x-1 inline-block">Support</a></li>
                             </ul>
                         </div>
 
@@ -51,13 +52,13 @@ export const Footer = () => {
                         </div>
                     </div>
                     <div className="flex gap-4">
-                        <a href="#" className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-rose-500 hover:border-rose-200 transition-all hover:scale-110">
+                        <a href="#" className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-rose-500 hover:border-rose-200 transition-all hover:scale-110 shadow-sm hover:shadow-md">
                             <Twitter size={18} />
                         </a>
-                        <a href="#" className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-rose-500 hover:border-rose-200 transition-all hover:scale-110">
+                        <a href="#" className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-rose-500 hover:border-rose-200 transition-all hover:scale-110 shadow-sm hover:shadow-md">
                             <Instagram size={18} />
                         </a>
-                        <a href="#" className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-rose-500 hover:border-rose-200 transition-all hover:scale-110">
+                        <a href="#" className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-rose-500 hover:border-rose-200 transition-all hover:scale-110 shadow-sm hover:shadow-md">
                             <Linkedin size={18} />
                         </a>
                     </div>

@@ -1,6 +1,7 @@
 
 import { motion } from 'framer-motion';
 import { Heart, ArrowRight, Plus } from 'lucide-react';
+import { LiveExtensionDemo } from './LiveExtensionDemo';
 
 export const Hero = () => {
     return (
@@ -87,30 +88,9 @@ export const Hero = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8 }}
+                    className="relative"
                 >
-                    <div className="flex-1 relative">
-                        <div className="bg-white rounded-[40px] p-4 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)] border border-slate-100 relative z-10 hover:scale-[1.01] hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.12)] transition-all duration-500 ease-in-out">
-                            <div className="rounded-[32px] overflow-hidden aspect-[4/5] relative bg-slate-100">
-                                {/* Placeholder for Lifestyle Image from Unsplash */}
-                                <img
-                                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Woman shopping mindfully on laptop"
-                                    className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700"
-                                />
-                            </div>
-
-                            {/* Floating "Impulse Avoided" Card */}
-                            <div className="absolute top-1/2 -left-12 -translate-y-1/2 bg-white p-4 pr-8 rounded-2xl shadow-xl border border-rose-50 flex items-center gap-4 animate-bounce-slow hover:pause">
-                                <div className="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center animate-pulse">
-                                    <Heart size={24} className="text-rose-500 fill-rose-500" />
-                                </div>
-                                <div>
-                                    <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Impulse Avoided</div>
-                                    <div className="text-xl font-extrabold text-slate-900">$2,847</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <LiveExtensionDemo />
                 </motion.div>
 
             </div>

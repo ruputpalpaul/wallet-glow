@@ -6,6 +6,7 @@ import { Hero } from './components/Hero';
 import { Features } from './components/Features';
 import { HowItWorks } from './components/HowItWorks';
 import { Stories } from './components/Stories';
+import { CTASection } from './components/CTASection';
 import { PricingPage } from './components/PricingPage';
 import { Footer } from './components/Footer';
 import { PaymentSuccess } from './components/PaymentSuccess';
@@ -42,8 +43,14 @@ function App() {
 
     // Hash Listener
     const handleHashChange = () => {
-      setCurrentHash(window.location.hash || '#');
-      window.scrollTo(0, 0);
+      const newHash = window.location.hash || '#';
+      setCurrentHash(newHash);
+
+      // Only scroll to top if we are navigating to a new "Page"
+      // If it's a section on the landing page (#features, etc), let browser handle it
+      if (['#login', '#signup', '#dashboard', '#success', '#cancel', '#about', '#pricing', '#privacy', '#terms', '#support'].includes(newHash)) {
+        window.scrollTo(0, 0);
+      }
     };
 
     window.addEventListener('hashchange', handleHashChange);
@@ -69,9 +76,9 @@ function App() {
 
   // Animation variants
   const pageVariants = {
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0, y: 10 },
     animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 }
+    exit: { opacity: 0, y: -10 }
   };
 
   if (loading) {
@@ -87,12 +94,12 @@ function App() {
 
       <AnimatePresence mode="wait">
         <motion.main
-          key={currentHash}
+          key={currentHash === '#features' || currentHash === '#how-it-works' || currentHash === '#stories' ? 'landing' : currentHash}
           variants={pageVariants}
           initial="initial"
           animate="animate"
           exit="exit"
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
         >
           {isLoginPage ? (
             <LoginPage />
@@ -141,6 +148,7 @@ function App() {
               <Features />
               <HowItWorks />
               <Stories />
+              <CTASection />
               <Footer />
             </>
           )}

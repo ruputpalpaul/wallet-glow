@@ -29,9 +29,10 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 export function PricingPage() {
 
     const handleCheckout = async (plan: 'monthly' | 'lifetime') => {
-        // TODO: Replace these with actual Stripe Payment Links
-        const MONTHLY_LINK = 'https://buy.stripe.com/PLACEHOLDER_MONTHLY';
-        const LIFETIME_LINK = 'https://buy.stripe.com/PLACEHOLDER_LIFETIME';
+        // Stripe Payment Links
+        // NOTE: Enable "Free Trial" (7 days) for the Monthly link in Stripe Dashboard if not already set.
+        const MONTHLY_LINK = 'https://buy.stripe.com/test_dRm8wIcZT5al34M8hhe3e00';
+        const LIFETIME_LINK = 'https://buy.stripe.com/test_7sYeV65xrcCN6gY7dde3e01';
 
         // Check for Auth
         const { data: { user } } = await import('../lib/supabase').then(m => m.supabase.auth.getUser());
