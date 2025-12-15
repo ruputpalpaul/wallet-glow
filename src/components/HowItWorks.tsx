@@ -58,7 +58,7 @@ export const HowItWorks = () => {
                 </div>
 
                 {/* Stats */}
-                <div className="bg-slate-50 rounded-[2rem] p-12 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4 relative overflow-hidden group hover:shadow-lg transition-shadow duration-300 cursor-default">
+                <div className="bg-white rounded-[2rem] p-12 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4 relative overflow-hidden group shadow-xl shadow-rose-100/50 border border-rose-100/50 hover:shadow-2xl hover:shadow-rose-200/50 hover:scale-[1.01] transition-all duration-300 cursor-default">
                     {/* Background Gradient Strip */}
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-rose-200 via-purple-200 to-rose-200 group-hover:h-1.5 transition-all duration-300" />
 
