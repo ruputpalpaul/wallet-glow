@@ -1,82 +1,112 @@
 import { Heart, Shield, Sparkles, Users } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export function AboutPage() {
     return (
-        <div className="pt-24 pb-20">
-            {/* Hero Section */}
-            <div className="max-w-4xl mx-auto px-6 text-center mb-20">
-                <h1 className="text-4xl md:text-5xl font-bold text-rose-950 mb-6">
-                    We're on a mission to bring <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-rose-600">mindful spending</span> to everyone.
+        <div className="bg-[#fffdf7] min-h-screen pt-32 pb-24">
+            {/* Header Section */}
+            <div className="max-w-4xl mx-auto px-6 text-center mb-16">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="inline-flex items-center gap-2 bg-[#fff0f5] text-rose-500 px-4 py-1.5 rounded-full text-sm font-medium mb-6 border border-rose-100"
+                >
+                    <Heart size={14} className="fill-current" />
+                    Our Story
+                </motion.div>
+
+                <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 font-display">
+                    About WalletGlow
                 </h1>
-                <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
-                    WalletGlow isn't just a budget app. It's a digital companion designed to help you pause, reflect, and make purchase decisions that align with your true happiness.
+
+                <p className="text-slate-500 text-lg max-w-2xl mx-auto leading-relaxed">
+                    We're building a kinder, gentler approach to financial wellness for neurodivergent minds.
                 </p>
             </div>
 
-            {/* Values Grid */}
-            <div className="max-w-6xl mx-auto px-6 mb-24">
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {[
-                        { icon: Heart, title: "Empathy First", desc: "We understand that impulse spending is emotional, not just financial." },
-                        { icon: Shield, title: "Privacy Focused", desc: "Your financial data is yours alone. We don't sell it to advertisers." },
-                        { icon: Sparkles, title: "Joyful Design", desc: "Finance doesn't have to be boring. We believe in beauty and delight." },
-                        { icon: Users, title: "Community Driven", desc: "We are building for a generation that wants to do better, together." }
-                    ].map((item, i) => (
-                        <div key={i} className="bg-white p-8 rounded-3xl border border-rose-100 shadow-sm hover:shadow-md transition-all text-center">
-                            <div className="w-12 h-12 bg-rose-50 rounded-2xl flex items-center justify-center mx-auto mb-4 text-rose-500">
-                                <item.icon size={24} />
-                            </div>
-                            <h3 className="font-bold text-lg text-slate-800 mb-2">{item.title}</h3>
-                            <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            {/* Story Section */}
-            <div className="bg-white py-20 border-y border-rose-50">
-                <div className="max-w-4xl mx-auto px-6">
-                    <div className="flex flex-col md:flex-row items-center gap-12">
-                        <div className="md:w-1/2">
-                            <div className="aspect-square rounded-full bg-rose-100 overflow-hidden relative border-4 border-white shadow-xl">
-                                <img
-                                    src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80"
-                                    alt="Team working"
-                                    className="object-cover w-full h-full"
-                                />
-                            </div>
-                        </div>
-                        <div className="md:w-1/2">
-                            <h2 className="text-3xl font-bold text-rose-900 mb-6">Our Story</h2>
-                            <div className="space-y-4 text-slate-600 leading-relaxed">
-                                <p>
-                                    It started with a late-night scrolling session and a cart full of things we didn't need. We realized that the internet is designed to make us buy, often bypassing our better judgment.
-                                </p>
-                                <p>
-                                    We built WalletGlow to be the pause button we wished we had. A gentle intervention that brings consciousness back to consumption.
-                                </p>
-                                <p>
-                                    Today, we're helping thousands of people save money, reduce clutter, and find joy in what they already have.
-                                </p>
-                            </div>
-                        </div>
+            {/* Mission Card */}
+            <div className="max-w-5xl mx-auto px-6 mb-24">
+                <div className="bg-[#fff0f5] rounded-[3rem] p-12 md:p-16 text-center relative overflow-hidden">
+                    <div className="relative z-10 max-w-3xl mx-auto">
+                        <h2 className="text-2xl font-bold text-slate-900 mb-6">Our Mission</h2>
+                        <p className="text-slate-600 leading-loose text-lg">
+                            WalletGlow was born from a simple truth: traditional financial advice doesn't work for everyone.
+                            Especially not for those of us with ADHD, executive dysfunction, or other neurodivergent experiences.
+                            <br /><br />
+                            We believe that impulse spending isn't a moral failing—it's a symptom of how our brains are wired
+                            in a world designed to hijack our attention and dopamine systems. You deserve tools that work
+                            WITH your brain, not against it.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            {/* Team Callout */}
-            <div className="max-w-4xl mx-auto px-6 text-center mt-20">
-                <h2 className="text-2xl font-bold text-rose-900 mb-4">Join us on this journey</h2>
-                <p className="text-slate-600 mb-8">
-                    We're just getting started, and we'd love to have you with us.
-                </p>
-                <a
-                    href="#signup"
-                    className="inline-flex items-center gap-2 bg-slate-900 text-white px-8 py-3 rounded-full font-semibold hover:bg-slate-800 transition-all hover:scale-105"
-                >
-                    Get Started Free <Sparkles size={16} />
-                </a>
+            {/* Values Section */}
+            <div className="max-w-6xl mx-auto px-6 mb-24">
+                <h2 className="text-3xl font-bold text-slate-900 text-center mb-16">Our Values</h2>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                    {/* Value 1 */}
+                    <div className="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                        <div className="w-12 h-12 bg-rose-100/50 rounded-2xl flex items-center justify-center text-rose-500 mb-6">
+                            <Heart size={24} className="fill-rose-500" />
+                        </div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">No Shame, Ever</h3>
+                        <p className="text-slate-500 leading-relaxed">
+                            Financial struggles are not character flaws. We create supportive, judgment-free experiences that meet you where you are.
+                        </p>
+                    </div>
+
+                    {/* Value 2 */}
+                    <div className="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                        <div className="w-12 h-12 bg-blue-100/50 rounded-2xl flex items-center justify-center text-blue-500 mb-6">
+                            <Users size={24} />
+                        </div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">Neurodivergent-First Design</h3>
+                        <p className="text-slate-500 leading-relaxed">
+                            Every feature is designed with ADHD and neurodivergent experiences at the center, not as an afterthought.
+                        </p>
+                    </div>
+
+                    {/* Value 3 */}
+                    <div className="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                        <div className="w-12 h-12 bg-indigo-100/50 rounded-2xl flex items-center justify-center text-indigo-500 mb-6">
+                            <Shield size={24} />
+                        </div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">Privacy First</h3>
+                        <p className="text-slate-500 leading-relaxed">
+                            Your financial data is deeply personal. We never sell, share, or monetize your information. Period.
+                        </p>
+                    </div>
+
+                    {/* Value 4 */}
+                    <div className="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                        <div className="w-12 h-12 bg-pink-100/50 rounded-2xl flex items-center justify-center text-pink-500 mb-6">
+                            <Sparkles size={24} />
+                        </div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">Joyful by Design</h3>
+                        <p className="text-slate-500 leading-relaxed">
+                            Financial wellness doesn't have to be boring or punishing. We believe in beauty, play, and celebrating every small win.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Team/Community Section */}
+            <div className="max-w-5xl mx-auto px-6 pb-20">
+                <div className="bg-[#fff0f5] rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
+                    <div className="relative z-10 max-w-3xl mx-auto">
+                        <h2 className="text-3xl font-bold text-slate-900 mb-6">Built by People Like You</h2>
+                        <p className="text-slate-600 leading-loose text-lg mb-10">
+                            WalletGlow is created by a small, dedicated team of designers, developers, and behavioral psychologists—many of whom are neurodivergent themselves.
+                            <br /><br />
+                            We understand the 2 AM shopping sprees, the dopamine-seeking clicks, and the shame spiral that follows. We've been there. That's why we're building the tool we wish existed when we needed it most.
+                        </p>
+                        <a href="#signup" className="inline-flex items-center justify-center px-8 py-4 bg-rose-400 hover:bg-rose-500 text-white rounded-2xl font-bold transition-all transform hover:scale-[1.02] shadow-lg shadow-rose-200">
+                            Join Our Community
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     );
