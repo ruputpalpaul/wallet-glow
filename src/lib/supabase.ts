@@ -15,5 +15,12 @@ if (!supabaseUrl || !supabaseAnonKey) {
 
 export const supabase = createClient(
     supabaseUrl || fallbackUrl,
-    supabaseAnonKey || fallbackKey
+    supabaseAnonKey || fallbackKey,
+    {
+        auth: {
+            persistSession: true,
+            autoRefreshToken: true,
+            detectSessionInUrl: true
+        }
+    }
 );
