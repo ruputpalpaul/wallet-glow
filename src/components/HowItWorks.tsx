@@ -58,26 +58,30 @@ export const HowItWorks = () => {
                 </div>
 
                 {/* Stats */}
-                <div className="bg-white rounded-[2rem] p-12 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4 relative overflow-hidden group shadow-xl shadow-rose-100/50 border border-rose-100/50 hover:shadow-2xl hover:shadow-rose-200/50 hover:scale-[1.01] transition-all duration-300 cursor-default">
-                    {/* Background Gradient Strip */}
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-rose-200 via-purple-200 to-rose-200 group-hover:h-1.5 transition-all duration-300" />
+                <div className="bg-white rounded-[2rem] p-8 md:p-12 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4 shadow-xl shadow-rose-100/50 border border-rose-100/50">
 
-                    <div className="text-center md:flex-1 group-hover:-translate-y-1 transition-transform duration-300 delay-75">
-                        <div className="text-4xl font-extrabold text-slate-900 mb-1">80%</div>
+                    <div className="text-center md:flex-1 group cursor-default">
+                        <div className="inline-block bg-rose-50 rounded-2xl px-8 py-6 mb-3 border border-rose-100 group-hover:scale-110 group-hover:bg-rose-100 group-hover:shadow-md group-hover:shadow-rose-100/50 transition-all duration-300">
+                            <div className="text-4xl font-extrabold text-slate-900">80%</div>
+                        </div>
                         <div className="text-sm text-slate-500 font-medium">Reduction in impulse purchases</div>
                     </div>
 
-                    <div className="hidden md:block w-px h-12 bg-slate-200 group-hover:bg-slate-300 transition-colors" />
+                    <div className="hidden md:block w-px h-12 bg-slate-200" />
 
-                    <div className="text-center md:flex-1 group-hover:-translate-y-1 transition-transform duration-300 delay-100">
-                        <div className="text-4xl font-extrabold text-slate-900 mb-1">$1,200</div>
+                    <div className="text-center md:flex-1 group cursor-default">
+                        <div className="inline-block bg-purple-50 rounded-2xl px-8 py-6 mb-3 border border-purple-100 group-hover:scale-110 group-hover:bg-purple-100 group-hover:shadow-md group-hover:shadow-purple-100/50 transition-all duration-300">
+                            <div className="text-4xl font-extrabold text-slate-900">$1,200</div>
+                        </div>
                         <div className="text-sm text-slate-500 font-medium">Average savings per year / user</div>
                     </div>
 
-                    <div className="hidden md:block w-px h-12 bg-slate-200 group-hover:bg-slate-300 transition-colors" />
+                    <div className="hidden md:block w-px h-12 bg-slate-200" />
 
-                    <div className="text-center md:flex-1 group-hover:-translate-y-1 transition-transform duration-300 delay-150">
-                        <div className="text-4xl font-extrabold text-slate-900 mb-1">10k+</div>
+                    <div className="text-center md:flex-1 group cursor-default">
+                        <div className="inline-block bg-indigo-50 rounded-2xl px-8 py-6 mb-3 border border-indigo-100 group-hover:scale-110 group-hover:bg-indigo-100 group-hover:shadow-md group-hover:shadow-indigo-100/50 transition-all duration-300">
+                            <div className="text-4xl font-extrabold text-slate-900">10k+</div>
+                        </div>
                         <div className="text-sm text-slate-500 font-medium">People taking back control</div>
                     </div>
                 </div>
